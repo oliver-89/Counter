@@ -16,14 +16,16 @@ class CounterGroup extends React.Component {
             <label>size<input onBlur={this.handleReSize} defaultValue={0} /> </label>
             <label>totalNumber:{this.state.totalValue}</label>
             {
-                initArray.map(key => <Counter onInCrease={this.handleCreaseTotalVaulue} onDiminish={this.handleDiminishTotalVaulue} key={key} />)
+                initArray.map(key => <Counter onInCrease={this.handleCreaseTotalVaulue} onDiminish={this.handleDiminishTotalVaulue} groupSize={this.state.size} key={key} />)
             }
         </div>
 
     }
+   
     handleReSize = (event) => {
         this.setState({
-            size: event.target.value ? parseInt(event.target.value) : 0
+            size: event.target.value ? parseInt(event.target.value) : 0,
+            totalValue:0
         });
     }
 

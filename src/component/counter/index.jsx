@@ -4,11 +4,14 @@ import React from 'react';
 class Counter extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { value: 0 }
+        this.state = {
+            value: 0,
+            groupSize: 0
+        }
     }
 
     render() {
-        return(
+        return (
             <div>
                 <button onClick={this.crease}>+</button>
                 <mark>{this.state.value}</mark>
@@ -29,6 +32,16 @@ class Counter extends React.Component {
             value: prevState.value - 1
         }))
         this.props.onDiminish();
+    }
+    static getDerivedStateFromProps(props, state) {
+
+        if (props.groupSize !== state.groupSize) {
+            return {
+                value: 0,
+                groupSize:props.groupSize
+            }
+        }
+        return null;
     }
 
 }
